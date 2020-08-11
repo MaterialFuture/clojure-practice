@@ -1,15 +1,28 @@
 (ns learn-clojure.core
   (:gen-class))
 
-(defn -main
-  "I don't do a whole lot ... yet."
+
+(defn hello-world
+  "Prints Hello x to the REPL."
   [& args]
-  (println "Hello, World!")
+  (if (nil? args)
+    (println "Hello World!")
+    (println-str "Hello, " args)))
+
+(defn test-conditionals
+  "Prints conditional statements for arguments provided."
+  [x]
   (println "Lets Test conditionals...")
-  (let [x 3]
     (cond
       (= x 3) (println "X is Three!")
       :else (println "X isn't three"))
     (if (= x 3)
       (println "X is three!")
-      (println "X isn't three"))))
+      (println "X isn't three")))
+
+(defn -main
+  "Run all the functions!"
+  [& args]
+  (hello-world)
+  (hello-world "User")
+  (test-conditionals 3))
