@@ -51,7 +51,17 @@
 (defn test-vector
   "Show how to access vectors"
   [& args]
+  (println new-vector)
   (println (conj new-vector "Uncharted 4")))
+
+;; Lists
+(def new-lists
+  '(1 2 3 4))
+
+(defn test-lists
+  "Show how to access lists"
+  [& args]
+  (println (conj new-lists "Some List")))
 
 (defn -main
   "Run all the functions!"
@@ -59,4 +69,6 @@
   (hello-world)
   (hello-x "User")
   (test-conditionals 3)
-  (test-vector))
+  (test-vector)
+  (test-hashes)
+  (test-lists))
