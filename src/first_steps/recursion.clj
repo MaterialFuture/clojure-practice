@@ -1,13 +1,13 @@
-(ns practice.codewars.recursion101)
+(ns first-steps.recursion)
 
 ;; Method 1
 (defn solve
-  [a b]
-    (cond
-      (and (= a 0) (= b 0)) '( a b)
-      (and (>= a (* 2 b))) (recur (- a (* 2 b)) b)
-      (and (>= b (* 2 a))) (recur a (- b (* 2 a)))
-      :else '(a b)))
+      [a b]
+      (cond
+        (and (= a 0) (= b 0)) '(a b)
+        (and (>= a (* 2 b))) (recur (- a (* 2 b)) b)
+        (and (>= b (* 2 a))) (recur a (- b (* 2 a)))
+        :else '(a b)))
 
 ;; Method 2
 (defn solve [a b]

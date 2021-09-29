@@ -1,4 +1,4 @@
-(ns learn-clojure.core
+(ns first-steps.core
   (:gen-class))
 
 (def the-world "world!")
