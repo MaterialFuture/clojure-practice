@@ -83,6 +83,17 @@
      (println "Done!")
      (recur-inc (inc iter)))))
 
+(def score-data [5 7 9 8 6])
+(def name-data ["John" "Peter" "Jim" "John" "Smith"])
+(defn create-user-data [score name]
+  {:name  name
+   :score score})
+
+(def full-team-data (map create-user-data score-data name-data))
+;; Get Names
+(map :name full-team-data)
+;; Get team data of scores only greater than 6
+(filter #(> (:score %) 6) full-team-data)
 
 (defn -main [& args]
   (return-user-data)
