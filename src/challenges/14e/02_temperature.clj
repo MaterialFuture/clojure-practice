@@ -16,6 +16,7 @@
 
 ;; Tests
 (defn run-tests [& args]
+  (println "Running tests...")
   (do
     (if (= (conversion-temperature 100 "c")
            "212.0 F")
@@ -43,3 +44,5 @@
            38.080000000000005)
       (println "Passed")
       (println "Failed"))))
+
+(run-tests)

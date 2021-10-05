@@ -19,3 +19,22 @@
 ;; Going upward
 (defn seconds->minutes [seconds]
   (/ seconds 60))
+
+
+(defn run-tests [& args]
+  (println "Running tests...")
+  (do
+    (if (= (years->seconds 21)
+           662256000)
+      (println "Passed")
+      (println "Failed"))
+    (if (= (years->seconds 55)
+           1734480000)
+      (println "Passed")
+      (println "Failed"))
+    (if (= (seconds->minutes (years->seconds 55))
+           28908000)
+      (println "Passed")
+      (println "Failed"))))
+
+(run-tests)
