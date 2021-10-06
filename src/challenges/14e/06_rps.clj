@@ -20,3 +20,15 @@
 
 ;Notes: by putting create-hand in a lambda it eliminates the need to the function
 ;Nested lets are useful when working with immutable data
+
+;; Bonus: Add lizard and spock
+;; Just adding more conditionals and more to the hands vector
+
+(defn run-test [& args]
+  (println (rock-paper-scissors "Rock"))
+  (if (= (rock-paper-scissors "Rock")
+         (or "Tie"
+             "You Lose..."
+             "You Win!"))
+    "Passed"
+    "Failed"))
