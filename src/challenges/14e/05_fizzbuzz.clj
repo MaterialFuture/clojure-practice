@@ -8,7 +8,7 @@
       (zero? (mod x 5)) "buzz"
       (zero? (mod x 3)) "fizz"
       :else x)))
-;Note: initially forgot the else, still used to CL
+;Note: initially forgot the :else, still used to CL
 
 (defn run-test [& args]
   (if (= (fizzbuzz 20)
