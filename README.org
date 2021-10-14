@@ -1,20 +1,18 @@
 #+TITLE: Learning Clojure
 
-This is a project to show my work alongside reading Clojure for the Brave and True.
+This is a project to show my work alongside reading ~Clojure for the Brave and True~ as well as other programming challenges.
 
-* Installation
-TBA
-* Usage
-FIXME: explanation
-~$ java -jar learn-clojure-0.1.0-standalone.jar [args]~
-* Options
-FIXME: listing of options this app accepts.
-* Examples
-...
-* Bugs
-...
+* Structure
+- First Steps
+  - core + practice = Clojure book stuff
+  - recursion is testing recursion
+- Challenges
+  - For online programming challenges
+* Run
+Load the files you want to test in the repl by loading them.
+Items in challenges will have tests, except cw things to ensure people on there don't try to copy work.
 * License
-Copyright © 2020 @MaterialFuture
+Copyright © 2021 @MaterialFuture
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
