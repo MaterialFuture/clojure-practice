@@ -75,7 +75,8 @@
 (defn bonus-time [salary bonus]
   (str \$ (* salary (if bonus
                       10
-                      1))))                                 ;wrap the whole if in the equation we need
+                      1))))
+;wrap the whole if in the equation we need
 
 ;;dvowel
 ;;first
@@ -106,3 +107,17 @@
                   :when (or (zero? (mod x 3))
                             (zero? (mod x 5)))]
               x)))
+
+;;tring swap
+(defn str-switch [s]
+  (join " " (for [x (split s #" ")]
+              (if (>= (count x) 5)
+                (join "" (reverse x))
+                x))))
+;;best version I saw
+(defn spinw [s]
+  (clojure.string/replace s #"\w{5,}" clojure.string/reverse))
+
+(defn wubwub [s]
+  (clojure.string/trim
+    (clojure.string/replace (clojure.string/replace s #"WUB" " ") #"/\s\s+/g" " ")))
