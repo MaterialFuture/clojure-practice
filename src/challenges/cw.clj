@@ -121,3 +121,13 @@
 (defn wubwub [s]
   (clojure.string/trim
     (clojure.string/replace (clojure.string/replace s #"WUB" " ") #"/\s\s+/g" " ")))
+
+(defn phoney-num [nums]
+  (str "(" (apply str (take 3 nums)) ") "
+       (apply str (take 3 (drop 3 nums))) "-"
+       (apply str (take-last 4 nums))))
+
+(defn phoney-nums-best
+  "The best way to format text using apply on an array"
+  [nums]
+  (apply format "(%d%d%d) %d%d%d-%d%d%d%d" nums))
