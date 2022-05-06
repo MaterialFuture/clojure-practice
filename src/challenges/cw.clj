@@ -131,3 +131,70 @@
   "The best way to format text using apply on an array"
   [nums]
   (apply format "(%d%d%d) %d%d%d-%d%d%d%d" nums))
+
+;;list of string regex - first try
+;; (defn fil [s w]
+;;   (count (filter #(some #{%} s) w)))
+;; (defn solve [s]
+;;   (let [alpha "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+;;         up   (into #{} (seq alpha))
+;;         low  (into #{} (seq (clojure.string/lower-case alpha)))
+;;         nums (range 10)]
+;;     (list (fil up s)
+;;           (fil low s)
+;;           (fil))))
+;; Second Try - Final
+(defn fil [s w]
+  (count (re-seq s w)))
+
+(defn solve [s]
+  (list (fil #"[A-Z]" s)
+        (fil #"[a-z]" s)
+        (fil #"[\d]" s)
+        (fil #"[^A-Za-z0-9]" s)))
+
+;;Sum of all
+;; (defn sum [& numbers]
+;;   (reduce + numbers))
+;;or
+(def sum +)
+
+;;Two to One
+(defn srt [x]
+  (apply str (dedupe (sort x))))
+
+(defn longest [s1 s2]
+  (if (> (count (srt s1))
+         (count (srt s2))) (srt s1) (srt s2)))
+
+;;Character Counter
+(defn validate-word [w]
+  (doseq [ww (seq (frequencies w))]
+    (if (> (val ww) 1) true false)))
+
+;; Populateion
+;; (defn nb-year [p0 percent aug p]
+;; (let [p0 (+ (* p0 (/ percent 100))
+;;    p0 50)]
+;;   (while (< p0 p))))
+
+;;1-2-3
+;; (defn number [lines]
+;;   (for [x lines
+;;         y (range 1 (inc (count lines)))]
+;;       (format "%d: %s" y x)))
+;; (defn number [lines]
+;;   (map #(format "%d: %s" % %) lines))
+;;(defn number [lines]
+;; (doseq [[i x] (map-indexed vector lines)]
+;;   (format "%d: %s" i x)))
+;; Final
+(defn alt-numbers-1-2-3 [lines]
+  (for [x (range (count lines))]
+    (format "%d: %s" (inc x) (nth lines x))))
+;;refactor
+(defn numbers-1-2-3 [lines]
+  (map (partial format "%d: %s") (iterate inc 1) lines))
+
+(defn find-odd- [xs]
+  (first (remove nil? (for [[x y] (frequencies xs)] (if (odd? y) x)))))
