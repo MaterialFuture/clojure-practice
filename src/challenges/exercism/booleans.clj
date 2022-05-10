@@ -1,20 +1,20 @@
 (ns challenges.exercism.booleans)
 
-(def knight-awake? true)
-(def archer-awake? true)
-(def prisoner-awake? false)
+(defn can-fast-attack? [knight-awake?]
+  (not knight-awake?))
 
-(defn can-fast-attack? [bool]
-  (if (bool) true false))
+(defn can-spy? [knight-awake? archer-awake? prisoner-awake?]
+  (or knight-awake?
+      archer-awake?
+      prisoner-awake?))
 
-(defn can-spy? [knight archer prisoner]
-  (if (and (false? knight)
-          (true? archer)
-          (false? prisoner))
-    true false))
-
-(defn can-signal-prisoner? [archer prisoner]
-  ...)
+(defn can-signal-prisoner? [archer-awake? prisoner-awake?]
+  (and (not archer-awake?)
+       prisoner-awake?))
 
 (defn can-free-prisoner? [knight-awake? archer-awake? prisoner-awake? dog-present?]
-  ...)
+  (or (and (not knight-awake?)
+           (not archer-awake?)
+           prisoner-awake?)
+      (and (not archer-awake?) ;If Annalyn has her pet dog with her she can rescue the prisoner if the archer is asleep
+           dog-present?)))
