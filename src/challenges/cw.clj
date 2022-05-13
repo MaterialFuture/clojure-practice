@@ -188,13 +188,51 @@
 ;;(defn number [lines]
 ;; (doseq [[i x] (map-indexed vector lines)]
 ;;   (format "%d: %s" i x)))
-;; Final
-(defn alt-numbers-1-2-3 [lines]
-  (for [x (range (count lines))]
-    (format "%d: %s" (inc x) (nth lines x))))
+;; Second Try
+;; (defn numbers-1-2-3 [lines]
+;;   (for [x (range (count lines))]
+;;     (format "%d: %s" (inc x) (nth lines x))))
 ;;refactor
 (defn numbers-1-2-3 [lines]
   (map (partial format "%d: %s") (iterate inc 1) lines))
 
-(defn find-odd- [xs]
-  (first (remove nil? (for [[x y] (frequencies xs)] (if (odd? y) x)))))
+;; Find Odd
+;; (defn find-odd- [xs]
+;;   (first (remove nil? (for [[x y] (frequencies xs)] (if (odd? y) x)))))
+;; refactor
+(defn find-odd [v]
+  (ffirst (filter #(odd? (second %)) (frequencies v))))
+
+;; Dupe-Count
+;; First
+;; (defn dupe-count [text]
+;;   (if (empty? text) 0
+;;     (count (filter #(> (second %) 1) (frequencies (clojure.string/lower-case text))))))
+;; refactor
+(defn dupe-count [text]
+  (count (filter #(> (second %) 1) (frequencies (clojure.string/lower-case text)))))
+
+;; Bit Count
+;; First go
+;; (defn count-bits [n]
+;;   (apply + (map #(Integer/parseInt %) (clojure.string/split (Integer/toBinaryString n) #""))))
+;; Refactor
+(defn count-bits [n]
+  (Integer/bitCount n))
+
+;; Sum Root
+;; (defn d-root [n]
+;;   (let [x (reduce + (map #(read-string %) (map str (str n))))]
+;;     (if (> (count (str x)) 1) (d-root x) x)))
+;; refactor
+(defn d-root [n]
+  (inc (rem (dec n) 9)))
+;; Alternatively (if (pos? n) (inc (mod (dec n) 9)) 0)
+
+;; Persistence - WIP
+(defn persistence [n]
+  (if (> (count (str n)) 1)
+    ;; TODO get count of how many times this ran with a counter
+    (let [x (reduce * (map #(read-string %) (map str (str n))))]
+      (if (> (count (str x)) 1)
+        (persistence x) x)) 0))
