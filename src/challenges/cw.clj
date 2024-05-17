@@ -236,3 +236,24 @@
     (let [x (reduce * (map #(read-string %) (map str (str n))))]
       (if (> (count (str x)) 1)
         (persistence x) x)) 0))
+
+
+(defn f_shortest [words]
+  (count (first (sort-by count                              ;;sort by letter count, grab lowest, return letter count
+                         (clojure.string/split words #" "))))) ;; split words to seq
+
+(defn j-case [w]
+  (map #(str (str/capitalize %)) (clojure.string/split w #" ")))
+
+;; capitalize each first letter of word
+;; Attempt #1
+(defn j-case [w]
+  (str/join (map str/capitalize (str/split w #"\b"))))      ;;Doesn't account for special characters
+;; Attempt #2
+(defn j-case [w]
+  (clojure.string/join "" (map clojure.string/capitalize
+                               (re-seq #"\b\w*('['\w]*)*\b" "test test's")))) ;;need to handle sequence
+
+
+
+
